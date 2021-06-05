@@ -114,6 +114,12 @@ func extractIconTags(doc *goquery.Document) []string {
 			hits = append(hits, href)
 		}
 	})
+	doc.Find("meta[property=\"og:image\"]").Each(func(i int, s *goquery.Selection) {
+		href := extractOgImage(s)
+		if href != "" {
+			hits = append(hits, href)
+		}
+	})
 	return hits
 }
 
@@ -142,6 +148,17 @@ func extractIconTag(s *goquery.Selection) string {
 	}
 
 	return href
+}
+
+func extractOgImage(s *goquery.Selection) string {
+	// What sort of iconType is in this <rel>?
+
+	content, _ := s.Attr("content")
+	if content == "" {
+		return ""
+	}
+
+	return content
 }
 
 // regexp.QuoteMeta an array of strings
