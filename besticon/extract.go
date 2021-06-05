@@ -111,7 +111,6 @@ func extractIconTags(doc *goquery.Document) []string {
 			hits = append(hits, href)
 		}
 	})
-	fmt.Printf("%v, hits)
 	return hits
 }
 
