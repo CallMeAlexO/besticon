@@ -46,7 +46,6 @@ func findIconLinks(siteURL *url.URL, html []byte) ([]string, error) {
 
 	// Add icons found in page
 	urls := extractIconTags(doc)
-	fmt.Printf("Device: %+v", urls)
 	for _, u := range urls {
 		absoluteURL, e := absoluteURL(baseURL, u)
 		if e == nil {
@@ -61,7 +60,7 @@ func findIconLinks(siteURL *url.URL, html []byte) ([]string, error) {
 	}
 	sort.Strings(result)
 
-	return result, nil
+	return urls, nil
 }
 
 // What is the baseURL for this doc?
