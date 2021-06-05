@@ -58,7 +58,7 @@ func findIconLinks(siteURL *url.URL, html []byte) ([]string, error) {
 	for u := range links {
 		result = append(result, u)
 	}
-	for u := range urls {
+	for _, u := range urls {
 		result = append(result, u)
 	}
 	sort.Strings(result)
