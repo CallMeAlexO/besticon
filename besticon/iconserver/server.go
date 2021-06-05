@@ -52,7 +52,7 @@ func iconsHandler(w http.ResponseWriter, r *http.Request) {
 	case e != nil:
 		renderHTMLTemplate(w, 404, iconsHTML, pageInfo{URL: url, Error: e})
 	case len(icons) == 0:
-		errNoIcons := errors.New("this poor site has no icons at all :-(")
+		errNoIcons := errors.New("this poor site has no icons at all :(")
 		renderHTMLTemplate(w, 404, iconsHTML, pageInfo{URL: url, Error: errNoIcons})
 	default:
 		addCacheControl(w, cacheDurationSeconds)
