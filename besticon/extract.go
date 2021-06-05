@@ -58,9 +58,12 @@ func findIconLinks(siteURL *url.URL, html []byte) ([]string, error) {
 	for u := range links {
 		result = append(result, u)
 	}
+	for u := range urls {
+		result = append(result, u)
+	}
 	sort.Strings(result)
 
-	return urls, nil
+	return result, nil
 }
 
 // What is the baseURL for this doc?
